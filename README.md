@@ -5,7 +5,7 @@ A small, production-minded support-ticket triage agent that ingests free-text ti
 
 This README explains how to run the project locally, the architectural choices I made, key assumptions, and how I would take this to production. (This repo follows the requirements: HTTP endpoint POST /triage, a small JSON KB, and basic tests.) 
 
-Assignment Screen for AI Engine…
+Assignment Screen for AI Engineer
 
  
 
