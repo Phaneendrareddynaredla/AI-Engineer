@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support Triage UI</title>
+</head>
+<body>
+
+<h2>Support Ticket Triage</h2>
+
+<form id="triageForm">
+    <textarea name="description" placeholder="Enter issue here..." rows="5" cols="50"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+
+<h3>Response:</h3>
+<pre id="output">Waiting...</pre>
+
+<script>
+    document.getElementById("triageForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+
+        let response = await fetch("/predict", { method: "POST", body: formData });
+        let data = await response.json();
+
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    });
+</script>
+
+</body>
+</html>

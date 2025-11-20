@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+pytest
+requests
+openai
+matplotlib
+seaborn
+scikit-learn

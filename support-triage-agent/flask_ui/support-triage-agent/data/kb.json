@@ -1,0 +1,139 @@
+[
+  {
+    "id": "KB-001",
+    "title": "Checkout error 500 on mobile",
+    "category": "Bug",
+    "symptoms": [
+      "500 error",
+      "mobile",
+      "checkout"
+    ],
+    "recommended_action": "Escalate to payments engineer; collect server trace"
+  },
+  {
+    "id": "KB-002",
+    "title": "Password reset emails not delivered",
+    "category": "Login",
+    "symptoms": [
+      "password reset",
+      "email not received",
+      "ses"
+    ],
+    "recommended_action": "Check email provider logs and bounce metrics"
+  },
+  {
+    "id": "KB-003",
+    "title": "Slow dashboard load after login",
+    "category": "Performance",
+    "symptoms": [
+      "slow",
+      "dashboard",
+      "login",
+      "latency"
+    ],
+    "recommended_action": "Investigate DB slow queries and caching layer"
+  },
+  {
+    "id": "KB-004",
+    "title": "Payment declined for specific card type",
+    "category": "Billing",
+    "symptoms": [
+      "payment declined",
+      "card",
+      "visa",
+      "amex"
+    ],
+    "recommended_action": "Ask for card BIN and escalate to payments gateway"
+  },
+  {
+    "id": "KB-005",
+    "title": "2FA codes delayed or missing",
+    "category": "Login",
+    "symptoms": [
+      "2fa",
+      "sms",
+      "codes",
+      "delayed"
+    ],
+    "recommended_action": "Validate SMS provider status and retry logic"
+  },
+  {
+    "id": "KB-006",
+    "title": "Mobile app crashes at checkout",
+    "category": "Bug",
+    "symptoms": [
+      "crash",
+      "mobile",
+      "checkout",
+      "stacktrace"
+    ],
+    "recommended_action": "Request crash logs and device model; escalate to mobile team"
+  },
+  {
+    "id": "KB-007",
+    "title": "Invoice amounts mismatch",
+    "category": "Billing",
+    "symptoms": [
+      "invoice",
+      "amount mismatch",
+      "billing"
+    ],
+    "recommended_action": "Sync ledger and run reconciliation job"
+  },
+  {
+    "id": "KB-008",
+    "title": "Search returns incomplete results",
+    "category": "Bug",
+    "symptoms": [
+      "search",
+      "missing results",
+      "index"
+    ],
+    "recommended_action": "Check indexing job and reindex if necessary"
+  },
+  {
+    "id": "KB-009",
+    "title": "API rate limit errors 429",
+    "category": "Performance",
+    "symptoms": [
+      "429",
+      "rate limit",
+      "api"
+    ],
+    "recommended_action": "Suggest client-side backoff and review quota settings"
+  },
+  {
+    "id": "KB-010",
+    "title": "Image upload fails for large files",
+    "category": "Bug",
+    "symptoms": [
+      "upload",
+      "image",
+      "size limit",
+      "s3"
+    ],
+    "recommended_action": "Increase size limits or compress client images before upload"
+  },
+  {
+    "id": "KB-011",
+    "title": "Refund processing delayed",
+    "category": "Billing",
+    "symptoms": [
+      "refund",
+      "delayed",
+      "payment"
+    ],
+    "recommended_action": "Check payment provider ledger and refund queue"
+  },
+  {
+    "id": "KB-012",
+    "title": "Feature flag not toggling for subset of users",
+    "category": "Bug",
+    "symptoms": [
+      "feature flag",
+      "toggle",
+      "rollout"
+    ],
+    "recommended_action": "Investigate feature service and rollback if necessary"
+  }
+]
