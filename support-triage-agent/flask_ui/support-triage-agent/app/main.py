@@ -5,7 +5,7 @@ import os
 
 app = FastAPI(title="Support Triage Agent")
 
-# Use real OpenAI if OPENAI_API_KEY provided, otherwise use mock LLM
+# Using API 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 agent = TriageAgent(use_openai=bool(OPENAI_API_KEY))
 
