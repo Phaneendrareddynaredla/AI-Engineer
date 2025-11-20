@@ -39,12 +39,7 @@ support-triage-agent/
 └─ README.md
 
 
-(If you want to see the code and sample KB used to generate this README, they are included in the repo files.) 
-
-
 Quickstart — run locally (development)
-
-Python 3.11 (or 3.10+)
 
 pip installed
 
@@ -62,60 +57,7 @@ Running
 # development server with auto-reload
 uvicorn app.main:app --reload --port 8000
 
-Example curl
-curl -X POST "http://localhost:8000/triage" \
-  -H "Content-Type: application/json" \
-  -d '{"description":"Checkout keeps failing with error 500 on mobile when I try to pay."}'
-
-
-Example response (trimmed):
-
-{
-  "summary": "Checkout fails with 500 on mobile",
-  "category": "Billing",
-  "severity": "Critical",
-  "likely": "known_issue",
-  "related_issues": [
-    { "id":"KB-001", "title":"Checkout error 500 on mobile", ... }
-  ],
-  "suggested_action": "Attach KB article and respond to user"
-}
-
-Tests
-
-Run the test suite:
-
-pytest -q
-
-
-Included tests check:
-
-Basic request/response shape.
-
-Edge cases (empty description returns HTTP 422).
-
-A known-issue example to confirm KB matching logic. 
-
-Untitled0.ipynb - Colab
-
-Design & architectural decisions
-High-level
-
-Single-agent orchestration: a single TriageAgent orchestrates the flow: summarize → classify → severity → KB search → action decision. This keeps the design simple and easy to reason about while cleanly separating responsibilities.
-
-Swappable LLM client: LLMClient is an adapter with the same interface whether it calls a remote LLM (OpenAI) or a local/mock implementation. This allows deterministic tests and safe demos without exposing secrets.
-
-Small KB + pluggable search tool: KB stored as JSON (simple, portable). KB search is a keyword-overlap scorer (small, deterministic). In production, swap to a vector DB (FAISS, Pinecone, Weaviate) with semantic similarity and embeddings.
-
-Why these choices?
-
-The assignment timeline favors a clear, correct, and testable design over premature optimization.
-
-Incremental production-readiness: components are designed to be replaced one at a time (e.g., swap keyword KB for vector DB, swap LLM client for enterprise model), minimizing refactor risk.
-
-Deterministic tests: heuristics + mock LLM ensure reproducible CI runs.
-
-Core components (short)
+Core components
 
 TriageAgent — orchestrates: calls LLM client for summary & classification, calls KBSearchTool for related issues, then uses deterministic rules to produce suggested_action.
 
@@ -127,7 +69,7 @@ FastAPI app serves /triage with Pydantic validation for robust request/response 
 
 Assumptions
 
-Tickets are English and reasonably concise (a few sentences).
+Tickets are English and reasonably concise .
 
 KB contains curated, human-readable items (title, category, symptom list, recommended action).
 
